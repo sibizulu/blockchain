@@ -1,0 +1,20 @@
+<ion-view title="Sign In">
+    <ion-content  class="center">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Customer ID</span>
+          <input type="text" ng-model="user.username" autocomplete="off" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="user.password" autocomplete="off" required>
+        </label>
+      </div>
+      <div class="padding">
+        <button nav-clear class="button button-block button-positive" ng-click="LogIn(user)">
+          Sign In
+        </button>
+
+      </div>
+    </ion-content>
+  </ion-view>
