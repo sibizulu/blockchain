@@ -1,16 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+.controller('DashCtrl', function($scope, $timeout) {
+  $scope.counter = 10;
+  $scope.onTimeout = function(){
+      $scope.counter += Math.floor((Math.random()*6)+1);
+      mytimeout = $timeout($scope.onTimeout,3000);
+  }
+  var mytimeout = $timeout($scope.onTimeout,3000);
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatsCtrl', function($scope) {
+
 })
 
 .controller('LoginCtrl', function($scope, $ionicLoading, $state) {
