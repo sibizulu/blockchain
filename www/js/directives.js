@@ -1,10 +1,9 @@
-angular.module('starter.services', [])
+angular.module('starter.directives', [])
 
 .directive('aniMojs', function () {
   return {
       restrict: 'AE',
       link: function(scope, elem, attrs) {
-        console.log(attrs);
           var el = document.getElementById(attrs.id);
           var scaleCurve = mojs.easing.path('M0,100 L25,99.9999983 C26.2328835,75.0708847 19.7847843,0 100,0');
           elSpan = el.querySelector('span'),
@@ -14,7 +13,7 @@ angular.module('starter.services', [])
               duration: 1500,
               shape : 'circle',
               fill : 'white',
-              x: '50%',
+              x: '45%',
               y: '50%',
               childOptions: {
                 radius: {12:0},
@@ -35,7 +34,7 @@ angular.module('starter.services', [])
               fill: 'transparent',
               stroke: '#988ADE',
               strokeWidth: {30:0},
-              x: '50%',
+              x: '45%',
               y: '50%',
               isRunLess: true,
               easing: mojs.easing.bezier(0.1, 1, 0.3, 1)

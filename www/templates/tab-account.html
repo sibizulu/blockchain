@@ -1,9 +1,15 @@
 <ion-view view-title="Account">
+  <ion-nav-bar class="bar-balanced">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
+    <div class="item item-image">
+      <img src="{{profile.picture}}">
+    </div>
+    <ion-item><p>Customer ID: {{profile.cust_id}}</p></ion-item>
+    <ion-item><p>Account NO: {{profile.account_no}}</p></ion-item>
+    <ion-item><p>Wallet Address:</p><p>{{profile.wallet}}</p></ion-item>
     <ion-item ng-click="logout()">Sign Out</ion-item>
     </ion-list>
   </ion-content>

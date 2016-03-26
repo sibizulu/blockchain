@@ -1,0 +1,24 @@
+<ion-view view-title="History">
+  <ion-nav-bar class="bar-balanced">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <div ng-repeat="group in history">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            Block #{{group.Block}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="(key, value) in group"
+                    ng-show="isGroupShown(group)">
+            <p>{{key}}:</p><p>{{value}}</p>
+          </ion-item>
+        </div>
+
+    </ion-list>
+  </ion-content>
+</ion-view>
