@@ -1,20 +1,28 @@
-<ion-view title="Sign In">
-    <ion-content  class="center">
+<ion-view title="ICICI Bank">
+  <ion-nav-bar class="bar-balanced">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+    <ion-content>
       <div class="list">
+      <div class="item item-image">
+        <img src="img/logo.png" />
+      </div>
         <label class="item item-input">
           <span class="input-label">Customer ID</span>
-          <input type="text" ng-model="user.username" autocomplete="off" required>
+          <input type="text" ng-model="user.username" required>
         </label>
         <label class="item item-input">
           <span class="input-label">Password</span>
-          <input type="password" ng-model="user.password" autocomplete="off" required>
+          <input type="password" ng-model="user.password" value="123456789" required>
         </label>
       </div>
       <div class="padding">
         <button nav-clear class="button button-block button-positive" ng-click="LogIn(user)">
-          Sign In
+          <i class="ion-ios-locked-outline"></i> Secure Login
         </button>
 
       </div>
     </ion-content>
+    <ion-footer-bar align-title="left" class="bar-balanced">
+    </ion-footer-bar>
   </ion-view>
