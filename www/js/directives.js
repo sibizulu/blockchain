@@ -90,7 +90,7 @@ angular.module('starter.directives', [])
             });
 
         elem.bind("DOMSubtreeModified", function(event) {
-          timeline.add(tween1, tween2, tween3, tween4, tween5);
+          timeline.add(tween4, tween5);
           timeline.start();
         });
       }

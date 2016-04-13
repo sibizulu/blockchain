@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','starter.directives'])
+angular.module('starter', ['ionic', 'ngCordova', 'starter.controllers', 'starter.services','starter.directives'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,6 +22,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
     }
   });
 })
+
+.config(['$ionicConfigProvider', function($ionicConfigProvider) {
+
+    $ionicConfigProvider.tabs.position('bottom'); // other values: top
+
+}])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -48,7 +54,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
       }
-    }
+    },
+    cache: false
   })
 
   .state('tab.chats', {

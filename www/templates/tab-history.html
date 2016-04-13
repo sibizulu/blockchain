@@ -1,25 +1,8 @@
-<ion-view view-title="History">
+<ion-view view-title="Scan">
   <ion-nav-bar class="bar-balanced">
     <ion-nav-back-button></ion-nav-back-button>
   </ion-nav-bar>
-  <ion-content>
-    <ion-list>
-    <ion-item><p>Check you transaction history in Blockchain.</p></ion-item>
-      <div ng-repeat="group in history">
-          <ion-item class="item-light"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            Block #{{group.Block}}
-          </ion-item>
-          <ion-item class="item-accordion"
-                    ng-repeat="(key, value) in group"
-                    ng-show="isGroupShown(group)">
-            <p>{{key}}:</p><p>{{value}}</p>
-          </ion-item>
-        </div>
-
-    </ion-list>
+  <ion-content class="padding">
+    <button class="button icon-left ion-qr-scanner button-positive button-block" ng-click="scanBarcode()">Scan Now</button>
   </ion-content>
 </ion-view>

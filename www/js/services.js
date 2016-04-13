@@ -2,15 +2,23 @@ angular.module('starter.services', [])
 
 .factory('AccountServe',function() {
   // Might use a resource here that returns a JSON array
+  var web3 = new Web3();
+  web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
+
+
+  console.log(balance);
 
   // Some fake testing data
   var profile = [{
     "card account_no": "4111133444441576",
     "loan account_no": "LBMUM11112221576",
+    "cust_name" : "Steve Johnson",
     "cust_id": "88882576",
     "account_no": "5555666677771576",
     "wallet": "df34523fgwetrqwe3534twrfwer3425wererertw",
     "uid" : 1793,
+    "balance" : balance,
     "picture": "img/adam.jpg"
  }];
 
