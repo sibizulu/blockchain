@@ -14,39 +14,23 @@
   <ion-nav-bar class="bar-balanced">
     <ion-nav-back-button></ion-nav-back-button>
   </ion-nav-bar>
-  <ion-content>
-    <div class="clearfix"></div>
+  <ion-content class="vcenter">
+
     <div class="row">
-    <div class="col col-100">
-      <ion-refresher
-          pulling-text="Pull to refresh..."
-          on-refresh="doRefresh()">
+      <div class="col col-100">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
         </ion-refresher>
-      <div class="innerdiv">
-        <div ani-mojs id="animojs_1" class="animojs"><span>{{profile.balance}}</span></div>
+        <div class="innerdiv center">
+          <div class="inner-wrapper">
+            <div ani-mojs id="animojs_1" class="animojs">
+              <span>{{profile.balance}}</span>
+            </div>
         </div>
+        </div>
+      </div>
     </div>
-    </div>
-<div class="clearfix"></div>
-
-<ion-list>
-<ion-item><p>Check you transaction history in Blockchain.</p></ion-item>
-  <div ng-repeat="group in history">
-      <ion-item class="item-light"
-                ng-click="toggleGroup(group)"
-                ng-class="{active: isGroupShown(group)}">
-          <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-        &nbsp;
-        Block #{{group.Block}}
-      </ion-item>
-      <ion-item class="item-accordion"
-                ng-repeat="(key, value) in group"
-                ng-show="isGroupShown(group)">
-        <p>{{key}}:</p><p>{{value}}</p>
-      </ion-item>
-    </div>
-
-</ion-list>
 
   </ion-content>
 </ion-view>

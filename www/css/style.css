@@ -48,7 +48,19 @@
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
 }
-.innerdiv{padding: 10%; width: 100%;margin: 20% 0}
+.vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/*.innerdiv{
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  height: 100%;
+  position: relative;
+}*/
 .img-rounded{
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -57,4 +69,7 @@
 .title-image{padding: 5px}
 .mynavbar,.mynavbar .title{
   height: 82px !important;
+}
+.center {
+
 }

@@ -1,18 +1,52 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $timeout, AccountServe, HistoryServe) {
+.controller('DashCtrl', function($scope, $timeout, AccountServe, HistoryServe, AccountBal) {
   $scope.profile = AccountServe.get("88882576");
   $scope.history = HistoryServe.all();
+
+ // $scope.$watch(function(scope) {
+ //  var web3 = new Web3();
+ //  web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+ //  var options = {fromBlock : 0, toBlock: 'latest', address:'0x66b1bad13e3708f6a3beb418de1422cf582e3d97'};
+ //  web3.eth.filter(options).watch(function(err, result) {
+ //    console.log(result);
+ //    var currentBalance = web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber();
+ //    scope.profile.balance = currentBalance;
+ //  });
+ // },
+ //  function() {}
+ // );
   $scope.toggleGroup = function(item) {
     item.show = !item.show;
   };
   $scope.isGroupShown = function(item) {
     return item.show;
   };
+
+  $scope.intervalFunction = function(){
+      $timeout(function() {
+      $scope.$apply(function() {
+        var web3 = new Web3();
+        web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+        var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
+        $scope.profile.balance = balance;
+       });
+        $scope.intervalFunction();
+      }, 5000)
+    };
+
+    // Kick off the interval
+  $scope.intervalFunction();
+
+
   $scope.doRefresh = function(){
-    $scope.profile = AccountServe.get("88882576");
-    $scope.history = HistoryServe.all();
-    $scope.$broadcast('scroll.refreshComplete');
+    $scope.$apply(function() {
+      var web3 = new Web3();
+      web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+      var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
+        $scope.profile.balance = balance;
+        $scope.$broadcast('scroll.refreshComplete');
+     });
   }
 })
 .controller('AccountCtrl', function($scope, $state, AccountServe) {

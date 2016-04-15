@@ -26,6 +26,9 @@ angular.module('starter.services', [])
     all: function() {
       return profile;
     },
+    allBal: function() {
+      return balance;
+    },
     get: function(current_profile) {
       for (var i = 0; i < profile.length; i++) {
         if (profile[i].cust_id === current_profile) {
@@ -35,6 +38,17 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+
+.factory('AccountBal',function() {
+  var web3 = new Web3();
+  web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
+  return {
+    balance: function() {
+      return balance;
+    }
+  }
 })
 
 .factory('HistoryServe',function() {
