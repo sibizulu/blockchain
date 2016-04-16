@@ -1,13 +1,20 @@
 angular.module('starter.services', [])
 
-.factory('AccountServe',function() {
+.factory('AccountServe',function($location) {
   // Might use a resource here that returns a JSON array
   var web3 = new Web3();
-  web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+
+
+  var host = $location.host();
+  if(host == 'localhost') {
+    web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  } else {
+    web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  }
+
   var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
 
 
-  console.log(balance);
 
   // Some fake testing data
   var profile = [{
@@ -16,7 +23,7 @@ angular.module('starter.services', [])
     "cust_name" : "Steve Johnson",
     "cust_id": "88882576",
     "account_no": "5555666677771576",
-    "wallet": "df34523fgwetrqwe3534twrfwer3425wererertw",
+    "wallet": "0x66b1bad13e3708f6a3beb418de1422cf582e3d97",
     "uid" : 1793,
     "balance" : balance,
     "picture": "img/adam.jpg"
@@ -40,9 +47,16 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('AccountBal',function() {
+.factory('AccountBal',function($location) {
   var web3 = new Web3();
-  web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+
+  var host = $location.host();
+  if(host == 'localhost') {
+    web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  } else {
+    web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  }
+
   var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
   return {
     balance: function() {
