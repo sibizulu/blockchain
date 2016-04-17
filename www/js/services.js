@@ -5,12 +5,15 @@ angular.module('starter.services', [])
   var web3 = new Web3();
 
 
-  var host = $location.host();
-  if(host == 'localhost') {
-    web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
-  } else {
-    web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
-  }
+  // var host = $location.host();
+  // if(host == 'localhost') {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  // } else {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  // }
+
+  web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+
 
   var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
 
@@ -50,12 +53,15 @@ angular.module('starter.services', [])
 .factory('AccountBal',function($location) {
   var web3 = new Web3();
 
-  var host = $location.host();
-  if(host == 'localhost') {
-    web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
-  } else {
-    web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
-  }
+  // var host = $location.host();
+  // if(host == 'localhost') {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  // } else {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  // }
+
+  web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  
 
   var balance = web3.fromWei(web3.eth.getBalance('0x66b1bad13e3708f6a3beb418de1422cf582e3d97').toNumber(), "ether");
   return {

@@ -25,12 +25,14 @@ angular.module('starter.controllers', [])
 
   var web3 = new Web3();
 
-  var host = $location.host();
-  if(host == 'localhost') {
-    web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
-  } else {
-    web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
-  }
+  // var host = $location.host();
+  // if(host == 'localhost') {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+  // } else {
+  //   web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+  // }
+  web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+
 
   $scope.intervalFunction = function(){
       $timeout(function() {
@@ -69,7 +71,11 @@ angular.module('starter.controllers', [])
         if (!imageData.cancelled) {
           var Web3 = require('web3');
           var web3 = new Web3();
-          web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+          // web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+
+          web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+
+
           web3.eth.sendTransaction({
             from: '0x66b1bad13e3708f6a3beb418de1422cf582e3d97',
             to: '0x38ec0bb24ff247452e7d3d1d5eadc2a9f5fd4a06',
@@ -87,7 +93,11 @@ angular.module('starter.controllers', [])
           if (!imageData.cancelled) {
             var Web3 = require('web3');
             var web3 = new Web3();
-            web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+            // web3.setProvider(new web3.providers.HttpProvider('http://192.168.27.101:8545'));
+
+            web3.setProvider(new web3.providers.HttpProvider('http://203.129.252.1:8545'));
+
+            
             web3.eth.sendTransaction({
               from: '0x66b1bad13e3708f6a3beb418de1422cf582e3d97',
               to: '0x38ec0bb24ff247452e7d3d1d5eadc2a9f5fd4a06',
